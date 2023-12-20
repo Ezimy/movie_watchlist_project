@@ -16,6 +16,7 @@ header{
     height: 25vh;
     background-repeat: no-repeat;
     background-size: cover;
+    padding: 0 3em;
 }
 #search-bar{
     position: absolute;
@@ -25,21 +26,42 @@ header{
     right: 0;
     margin: 0 auto 0 auto;
     display: flex;
+    min-width: 462px;
+    height: 2.4375em;
     max-width: 600px;
-    border-radius: 4px;
+    border-radius: 0.5em;
     background-color: #2E2E2F;
-    padding: 0 10px;
+    padding: 0 0 0 10px;
 }
 form>img{
+    align-self: center;
     width: 1.25em;
     height: 1.25em;
+    margin-right: 10px;
 }
 form>input{
-    width: fill;
+    border: none;
+    color: #A5A5A5;
+    background-color: #2E2E2F;
+    flex-grow: 1;
 }
 form>button{
-    position: absolute;
+    color: #FFFFFF;
+    background: #4B4B4B;
     width: 120px;
-    height: fill;
-    right: 0px;
+    height: 100%;
+    flex-grow: 1;
+    max-width: 120px;
+    border-top-right-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    border: none;
+}
+#content-section{
+    width: 100%;
+    min-height: 779px;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    text-align: center;
 }
