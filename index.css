@@ -61,7 +61,14 @@ form>button{
     min-height: 779px;
     font-size: 1.25rem;
     display: flex;
+    flex-direction: column;
     justify-content:center;
     align-items: center;
     text-align: center;
+}
+#page-btn-section{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
 }
