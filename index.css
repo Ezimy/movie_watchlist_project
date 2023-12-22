@@ -3,6 +3,7 @@ html, body {
     padding: 0;
     background-color: #121212;
     color: white;
+    font-family: 'Inter', sans-serif;
 }
 *{
     box-sizing: border-box;
@@ -18,7 +19,17 @@ header{
     background-size: cover;
     padding: 0 3em;
 }
+header>h1{
+    font-weight: 800;
+    font-size: 2.625rem;
+}
+header>p{
+    font-weight: 700;
+    font-size: 0.875rem;
+}
 #search-bar{
+    font-size: 0.875rem;
+    font-weight: 500;
     position: absolute;
     display: flex;
     top: 23vh;
@@ -66,9 +77,48 @@ form>button{
     align-items: center;
     text-align: center;
 }
-#page-btn-section{
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
+.movie-entry {
+    padding-bottom: 2em;
+    margin-top: 3.125em;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #FFFFFF;
+    gap: 1em;
+}
+.movie-entry>img{
+    align-self: center;
+    height: fit-content;
+    width: 9.375em;
+}
+.movie-info{
+    display: block;
+    width: 21.375em;
+}
+.title-and-rating>h1{
+    font-weight: 500;
+    font-size: 1.125rem;
+}
+.movie-rating, .runtime-genres-btn{
+    font-weight: 400;
+    font-size: 0.75rem;
+}
+.plot{
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: #A5A5A5;
+}
+.title-and-rating,
+.runtime-genres-btn,
+.movie-rating,
+.add-btn{
+    justify-content: space-between;
+    align-self: center;
+    display: flex;
+}
+.add-btn>img,
+.movie-rating>img{
+    align-self: center;
+    width: 1em;
+    height: 1em;
 }
