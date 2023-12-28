@@ -4,12 +4,17 @@ if (localStorage.getItem("watchlist") === null) {
 
 const contentSection = document.getElementById("content-section");
 const inputText = document.getElementById("search-input");
-const searchBtn = document.getElementById("search-btn");
-const pageSection = document.getElementById("page-btn-section");
-
 let page = 1;
-let searchedtitle = "";
-let pageStorage = [];
+function addMovieToWatchlist(movie) {
+        let watchlist = JSON.parse(localStorage.getItem("watchlist"));
+        watchlist.push(movie);
+        localStorage.setItem("watchlist", JSON.stringify(watchlist));
+    }
+export function removeMovieFromWatchList(movie){
+    let watchlist = JSON.parse(localStorage.getItem("watchlist"));
+    watchlist.pop(movie);
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+}
 
 function getPageHTML(){
     let pageHTML = ''
@@ -52,8 +57,8 @@ async function getMoviesHTML() {
                 <p>${movieDetailsArray[i].runtime}</p>
                 <p>${movieDetailsArray[i].genres}</p>
                 <div class="add-btn" id="${data.Search[i].imdbID}">
-                    <img src="images/add.png">
-                    <p>Watchlist</p>
+                    <img src="images/add.png" class="add-btn">
+                    <p class="add-btn">Watchlist</p>
                 </div>
             </div>
             <p class="plot">${movieDetailsArray[i].plot}</p>
@@ -69,8 +74,8 @@ async function getMoviesHTML() {
     const data = await res.json();
   
     const rating = data.Ratings && data.Ratings.length > 0 ? data.Ratings[0].Value : "N/A";
-  
     return {
+      id: data.imdbID,
       poster: data.Poster,
       title: data.Title,
       runtime: data.Runtime,
@@ -87,6 +92,7 @@ function render() {
 document.addEventListener('click', function(e){
     if(e.target.id === "search-btn"){
         e.preventDefault()
+        page = 1
         render()
     }
     if(e.target.id ==="next-page"){
@@ -97,4 +103,29 @@ document.addEventListener('click', function(e){
         page = page - 1
         render()
     }
+    if(e.target.classList.contains("add-btn")){
+        let id =''
+        //if div is pressed
+        if(e.target.id){
+            id = e.target.id
+            getMovieByID(id).then(movieObj => {
+                addMovieToWatchlist(movieObj)
+                logWatchlist();
+            });
+        }
+        //if children of div is pressed
+        else{
+            id=e.target.parentElement.id
+            getMovieByID(id).then(movieObj => {
+                addMovieToWatchlist(movieObj)
+                logWatchlist();
+
+            });
+        }
+    }
 });
+export function logWatchlist() {
+    let watchlistString = localStorage.getItem("watchlist");
+    let watchlist = JSON.parse(watchlistString);
+    console.log("Current watchlist:", watchlist);
+}
