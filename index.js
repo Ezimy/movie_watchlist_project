@@ -70,7 +70,7 @@ async function getMoviesHTML() {
     return moviesHTML;
   }
   async function getMovieByID(imdbId) {
-    const res = await fetch(`http://www.omdbapi.com/?apikey=acec20f1&i=${imdbId}`, { method: "GET" });
+    const res = await fetch(`https://www.omdbapi.com/?apikey=acec20f1&i=${imdbId}`, { method: "GET" });
     const data = await res.json();
   
     const rating = data.Ratings && data.Ratings.length > 0 ? data.Ratings[0].Value : "N/A";
