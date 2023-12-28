@@ -59,6 +59,7 @@ form>input{
     flex-grow: 1;
 }
 form>button{
+    cursor: pointer;
     color: #FFFFFF;
     background: #4B4B4B;
     width: 120px;
