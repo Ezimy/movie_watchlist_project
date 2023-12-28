@@ -36,7 +36,7 @@ function getPageHTML(){
 
 async function getMoviesHTML() {
     let moviesHTML = '';
-    const res = await fetch(`http://www.omdbapi.com/?apikey=acec20f1&s=${inputText.value}&page=${page}&type=movie`, { method: "GET" });
+    const res = await fetch(`https://www.omdbapi.com/?apikey=acec20f1&s=${inputText.value}&page=${page}&type=movie`, { method: "GET" });
     const data = await res.json();
   
     // Use Promise.all to wait for all promises to resolve
