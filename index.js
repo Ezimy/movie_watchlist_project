@@ -124,8 +124,3 @@ document.addEventListener('click', function(e){
         }
     }
 });
-export function logWatchlist() {
-    let watchlistString = localStorage.getItem("watchlist");
-    let watchlist = JSON.parse(watchlistString);
-    console.log("Current watchlist:", watchlist);
-}
