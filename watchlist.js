@@ -1,4 +1,4 @@
-import { removeMovieFromWatchList, logWatchlist} from "/index.js";
+import { removeMovieFromWatchList} from "/index.js";
 let watchList = JSON.parse(localStorage.getItem("watchlist") || "[]");
 const contentSection = document.getElementById("content-section");
 render()
@@ -59,7 +59,6 @@ document.addEventListener('click', function(e){
             removeMovieFromWatchList(getMovieIndex(id))
             render()
         }
-        console.log(watchList)
     }
 });
 function getMovieIndex(id){
