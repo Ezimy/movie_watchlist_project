@@ -60,6 +60,5 @@ document.addEventListener('click', function(e){
             removeMovieFromWatchList(movieObj)
             render()
         }
-        logWatchlist()
     }
 });

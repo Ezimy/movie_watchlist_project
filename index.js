@@ -1,10 +1,10 @@
-if (localStorage.getItem("watchlist") === null) {
-    localStorage.setItem("watchlist", JSON.stringify([]));
-  }
-
 const contentSection = document.getElementById("content-section");
 const inputText = document.getElementById("search-input");
 let page = 1;
+//local storage functionality
+if (localStorage.getItem("watchlist") === null) {
+    localStorage.setItem("watchlist", JSON.stringify([]));
+  }
 function addMovieToWatchlist(movie) {
         let watchlist = JSON.parse(localStorage.getItem("watchlist"));
         watchlist.push(movie);
@@ -89,6 +89,7 @@ function render() {
         contentSection.innerHTML = html;
     });
 }
+//event listeners
 document.addEventListener('click', function(e){
     if(e.target.id === "search-btn"){
         e.preventDefault()
@@ -110,7 +111,6 @@ document.addEventListener('click', function(e){
             id = e.target.id
             getMovieByID(id).then(movieObj => {
                 addMovieToWatchlist(movieObj)
-                logWatchlist();
             });
         }
         //if children of div is pressed
@@ -118,7 +118,6 @@ document.addEventListener('click', function(e){
             id=e.target.parentElement.id
             getMovieByID(id).then(movieObj => {
                 addMovieToWatchlist(movieObj)
-                logWatchlist();
 
             });
         }
