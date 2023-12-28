@@ -20,7 +20,7 @@ async function getMoviesHTML() {
                 <div class="runtime-genres-btn">
                     <p>${watchList[i].runtime}</p>
                     <p>${watchList[i].genres}</p>
-                    <div class="remove-btn" id="${watchList[i].imdbID}">
+                    <div class="remove-btn" id="${watchList[i].id}">
                         <img src="images/add.png" class="remove-btn">
                         <p class="remove-btn">Watchlist</p>
                     </div>
@@ -47,18 +47,22 @@ async function getMoviesHTML() {
 document.addEventListener('click', function(e){
     if(e.target.classList.contains("remove-btn")){
         let id =''
-        let movieObj = watchList.find(movie => movie.imdbID === id)
         //if div is pressed
         if(e.target.id){
             id = e.target.id
-            removeMovieFromWatchList(movieObj)
+            removeMovieFromWatchList(getMovieIndex(id))
             render()
         }
         //if children of div is pressed
         else{
             id=e.target.parentElement.id
-            removeMovieFromWatchList(movieObj)
+            removeMovieFromWatchList(getMovieIndex(id))
             render()
         }
+        console.log(watchList)
     }
 });
+function getMovieIndex(id){
+    let movieIndex = watchList.findIndex(movie =>  id === movie.id)
+    return movieIndex
+}

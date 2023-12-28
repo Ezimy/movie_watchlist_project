@@ -1,19 +1,20 @@
 const contentSection = document.getElementById("content-section");
 const inputText = document.getElementById("search-input");
 let page = 1;
+let watchlist = JSON.parse(localStorage.getItem("watchlist"));
 //local storage functionality
 if (localStorage.getItem("watchlist") === null) {
     localStorage.setItem("watchlist", JSON.stringify([]));
   }
 function addMovieToWatchlist(movie) {
-        let watchlist = JSON.parse(localStorage.getItem("watchlist"));
         watchlist.push(movie);
         localStorage.setItem("watchlist", JSON.stringify(watchlist));
     }
-export function removeMovieFromWatchList(movie){
-    let watchlist = JSON.parse(localStorage.getItem("watchlist"));
-    watchlist.pop(movie);
+export function removeMovieFromWatchList(index){
+    if (index > -1){
+    watchlist.splice(index,1)
     localStorage.setItem("watchlist", JSON.stringify(watchlist));
+    }
 }
 
 function getPageHTML(){
